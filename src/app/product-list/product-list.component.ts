@@ -1,15 +1,18 @@
-import {Component, OnInit }from '@angular/core'; 
+import { Component, OnInit } from '@angular/core';
 
-@Component( {
-selector:'app-product-list', 
-templateUrl:'./product-list.component.html', 
-styleUrls:['./product-list.component.css']
+@Component({
+  selector: 'app-product-list',
+  templateUrl: './product-list.component.html',
+  styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
 
-pageTitle:string = "Products list"; 
-products:any[]=[
-  {
+  pageTitle: string = "Products list";
+  imageWidth: number = 50;
+  imageMargin: number = 2;
+  listFilter: string = "cart";
+  showImage: boolean = false;
+  products: any[] = [{
     "productId": 1,
     "productName": "Leaf Rake",
     "productCode": "GDN-0011",
@@ -18,8 +21,7 @@ products:any[]=[
     "price": 19.95,
     "starRating": 3.2,
     "imageUrl": "assets/images/leaf_rake.png"
-  },
-  {
+  }, {
     "productId": 2,
     "productName": "Garden Cart",
     "productCode": "GDN-0023",
@@ -28,8 +30,7 @@ products:any[]=[
     "price": 32.99,
     "starRating": 4.2,
     "imageUrl": "assets/images/garden_cart.png"
-  },
-  {
+  }, {
     "productId": 5,
     "productName": "Hammer",
     "productCode": "TBX-0048",
@@ -38,8 +39,7 @@ products:any[]=[
     "price": 8.9,
     "starRating": 4.8,
     "imageUrl": "assets/images/hammer.png"
-  },
-  {
+  }, {
     "productId": 8,
     "productName": "Saw",
     "productCode": "TBX-0022",
@@ -48,8 +48,7 @@ products:any[]=[
     "price": 11.55,
     "starRating": 3.7,
     "imageUrl": "assets/images/saw.png"
-  },
-  {
+  }, {
     "productId": 10,
     "productName": "Video Game Controller",
     "productCode": "GMG-0042",
@@ -59,11 +58,14 @@ products:any[]=[
     "starRating": 4.6,
     "imageUrl": "assets/images/xbox-controller.png"
   }
-];
+  ];
 
-constructor() {}
+  constructor() { }
 
-ngOnInit() {
-}
+  ngOnInit() {
+  }
 
+  toggleImage(): void {
+    this.showImage = !this.showImage;
+  }
 }
