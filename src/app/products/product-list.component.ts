@@ -18,14 +18,19 @@ export class ProductListComponent implements OnInit {
 
   _listFilter: string = '';
 
-  products: any[] = [];
-  
+  products: IProduct[] = [];
+  private errorMesasge:string;
   constructor(private productService: ProductService) { 
   }
 
   ngOnInit() {
-    this.products = this.productService.getProducts();
-    this.filteredProducts = this.products;
+     this.productService.getProducts().subscribe({
+      next: products=> {
+        this.products = products
+        this.filteredProducts = this.products;
+      },
+      error: err => this.errorMesasge = err
+    });
   }
 
   toggleImage(): void {
