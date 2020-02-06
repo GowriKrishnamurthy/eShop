@@ -20,6 +20,14 @@ export class ProductService {
     );
   }
   
+  getProductById(productId:number): Observable<IProduct | undefined>{
+    return this.getProducts()
+    .pipe(
+      map((products: IProduct[]) => products.find(p => p.productId === productId)),
+      catchError(this.handleError)
+    );
+  }
+  
   private handleError(err: HttpErrorResponse) {
     // in a real world app, we may send the server to some remote logging infrastructure
     // instead of just logging it to the console
