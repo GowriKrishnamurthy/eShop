@@ -10,12 +10,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forChild([
-      { path:'products', component:ProductListComponent},
-      { path:'products/:id', canActivate: [ProductDetailGuard], component:ProductDetailComponent} 
-    ])
-   ],
-    exports: [RouterModule]
+    imports: [RouterModule.forChild(routes)],
+    exports: [RouterModule]  
 })
 export class ProductRoutingModule { }
